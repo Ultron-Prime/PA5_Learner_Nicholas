@@ -1,0 +1,97 @@
+Here I'll just be going over what the program does, line-by-line of output.
+
+"////////////////////////////"
+"/////    Base Tests    /////" - Nothing going on
+"////////////////////////////"
+
+"Testing Base Default ctor" - Nothing going on
+"Vehicle #1: Default Constructor" - The default constructor is called, which initilizes the m_vin to 1,
+and outputs the above.
+
+"Testing Base insertion operator" - Nothing going on
+"Vehicle #1 @ [garbage, garbage, garbage]" where "garbage" is a random number - Tests the insertion
+operator. The m_lla array was not initialized, as per requirements, but is still outputted here.
+
+"Base idgen: 1" - Outputs the s_idgen static int, which was set to the m_vin int.
+
+"Testing Base Parametrized ctor" - Nothing going on
+"Vehicle #99: Parametrized Constructor" - The parametrized constructor is called, which basically initilizes the m_vin to the given value and the m_lla array to the given array, and outputs the above.
+"Vehicle #99 @ [39.54, 119.82, 4500.0]" - Tests the insertion operator, again.
+
+"Base idgen: 99" - Outputs the s_idgen static int, which was set to the m_vin int in the parametrized
+constructor.
+
+"Testing Base Copy ctor" - Nothing going on
+"Vehicle #100: Copy Constructor" - Creates a new vehicle, with a m_vin that is one greater than the m_vin
+of the copied vehicle object, and the same m_lla array as the copied vehicle object.
+"Vehicle #100 @ [39.54, 119.82, 4500]" - Tests the insertion operator, again.
+
+"Base idgen: 100" - Outputs the s_idgen static int, which was set to the m_vin int in the copy
+constructor.
+
+"Testing Base Assignment operator" - Nothing going on
+"Vehicle #1: Assignment" - The assignment operator is called.
+"Vehicle #1: @ [39.54, 119.82, 4500]" - The assignment operator set Vehicle #1's m_lla array to the values
+in vehicle #100's m_lla array.
+
+"Base idgen: 100" - The s_idgen int wasn't reset or changed when the assignment operator was called.
+
+"Testing Base Move function" - Nothing going on
+"Vehicle #1: CANNOT MOVE - I DON'T KNOW HOW" - Calls the move() method within the Vehicle class, which only
+outputs the above without changing the m_lla array.
+
+"////////////////////////////"
+"/////   Derived Tests  /////" - Nothing going on
+"////////////////////////////"
+
+"Testing Derived Default ctor" - Nothing going on
+"Vehicle #101: Default Constructor" - Since the Car default constructor is derived from the Vehicle default
+constructor, the Car default constructor calls the Vehicle default constructor, which pre-increments the
+s_idgen int and uses it as the m_vin.
+"Car #101: Default Constructor" - Calls the Car default constructor.
+
+"Testing Derived insertion operator" - Nothing going on
+"Car #101: Plates: , Throttle: 0 @ [-nan, -nan, 0]" - m_plates and the m_lla weren't initialized.
+
+"Derived idgen: 101" - Outputs the s_idgen from the above car.
+
+"Testing Derived Parametrized ctor" - Nothing going on
+"Vehicle #999: Parametrized Constructor" - Calls the Vehicle parametrized constructor first...
+"Car #999: Parametrized Constructor" - ...then the Car parametrized constructor.
+"Car #999: Plates: Gandalf, Throttle: 0 @ [39.54, 119.82, 4500]" - m_plates and m_lla were initialized.
+
+"Derived idgen: 999" - Outputs the s_idgen from the above car.
+
+"Testing Derived Copy ctor" - Nothing going on
+"Vehicle #1000: Copy Constructor" - Calls the Vehicle copy constructor first...
+"Car #1000: Copy Constructor" - ...then the Car copy constructor.
+"Car #1000: Plates: Gandalf, Throttle: 0 @ [39.54, 119.82, 4500]" - m_plates and m_lla were copied from Car
+#999.
+
+"Derived idgen: 1000" - Outputs the s_idgen from the above car, which was incremented from Car #999.
+
+"Testing Derived Assignment operator" - Nothing going on
+"Car #101: Assignment" - Calls the assignment operator on Car #101.
+"Car #101: Plates: Gandalf, Throttle: 0 @ [39.54, 119.82, 4500]" - Assigns all the values from the copy of
+Car #999, except the m_vin int, to Car #101.
+
+"Derived idgen: 1000" - The s_idgen int wasn't reset or changed when the assignment operator was called.
+
+"Testing Derived Move Function" - Nothing going on
+"Car #101 DRIVE to destination, with throttle @ 75" - Car::move() is called, which outputs this line, then
+calls the drive() method, which sets m_throttle to 75, then changes the m_lla array to the destination.
+
+"////////////////////////////"
+"/////    Tests Done    /////" - Nothing going on
+"////////////////////////////"
+"Car #1000: Destructor"
+"Vehicle #1000: Destructor"
+"Car #999: Destructor"
+"Vehicle #999: Destructor"
+"Car #101: Destructor"
+"Vehicle #101: Destructor"
+"Vehicle #100: Destructor"
+"Vehicle #99: Destructor"
+"Vehicle #1: Destructor" - Calls a destructor for each object created; calls both destructors for Car
+objects.
+
